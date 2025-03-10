@@ -79,7 +79,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className={`text-md md:text-6xl font-bold ${
+              className={`text-md md:text-4xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               } mb-6`}
             >
@@ -100,11 +100,11 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className={`text-md ${
+              className={`text-md font-bold ${
                 theme === 'dark' ? 'text-blue-100' : 'text-gray-700'
               } max-w-3xl mx-auto`}
             >
-              Pilih Kanal informasi mudik yang anda butuhkan.
+              Pilih Kanal informasi mudik yang anda butuhkan : 
             </motion.p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   MapPin,
   Phone,
@@ -9,29 +9,63 @@ import {
   Shield,
   FileSpreadsheet,
   ArrowRight,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    // Check if there's a saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-[#242581]">
+    <main className={`min-h-screen ${theme === 'dark' ? 'bg-[#242581]' : 'bg-blue-50'}`}>
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative bg-[#242581] overflow-hidden"
+        className={`relative ${theme === 'dark' ? 'bg-[#242581]' : 'bg-blue-50'} overflow-hidden`}
       >
-        {/* Background Pattern */}
-        {/* <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 2px, transparent 0)',
-            backgroundSize: '40px 40px'
-          }}>
-          </div>
-        </div> */}
-
         <div className="container mx-auto px-12 py-4">
+          {/* Theme Toggle Button */}
+          <div className="absolute top-4 right-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-6 w-6 text-yellow-300" />
+              ) : (
+                <Moon className="h-6 w-6 text-gray-700" />
+              )}
+            </button>
+          </div>
+
           <div className="max-w-4xl mx-auto text-center">
             <motion.img
               initial={{ scale: 0.8, opacity: 0 }}
@@ -45,7 +79,9 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-md md:text-6xl font-bold text-white mb-6"
+              className={`text-md md:text-6xl font-bold ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              } mb-6`}
             >
               Selamat Datang di Polantas Menyapa
             </motion.h1>
@@ -53,7 +89,9 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-md text-blue-100 max-w-3xl mx-auto mb-2"
+              className={`text-md ${
+                theme === 'dark' ? 'text-blue-100' : 'text-gray-700'
+              } max-w-3xl mx-auto mb-2`}
             >
               Mudik 2025 semakin dekat! Pastikan perjalanan Anda lebih aman,
               nyaman, dan lancar dengan informasi terkini.
@@ -62,14 +100,14 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-md text-blue-100 max-w-3xl mx-auto"
+              className={`text-md ${
+                theme === 'dark' ? 'text-blue-100' : 'text-gray-700'
+              } max-w-3xl mx-auto`}
             >
               Pilih Kanal informasi mudik yang anda butuhkan.
             </motion.p>
           </div>
         </div>
-
-        {/* Wave Shape Divider */}
       </motion.section>
 
       {/* Grid Section */}
@@ -78,50 +116,34 @@ export default function Home() {
           {[
             {
               title: "Polantas Menyapa By Travoy",
-              // icon: <MapPin className="h-8 w-8" />,
-              // description: "Menggunakan Aplikasi Travoy sebagai sumber informasi seputer mudik dan kondisi jalu lintas terkini.",
               delay: 0.2,
             },
             {
               title: "Pantauan CCTV Live",
-              // icon: <Camera className="h-8 w-8" />,
-              // description: "Sumber CCTV: Link cctv smart city dikomsel. Shortlink CCTV toll Travoy",
               delay: 0.4,
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.6,
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.8,
             },
             {
               title: "Rest Area, SPBU dan Bengkel terdekat",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.6,
             },
             {
               title: "Daftar Pos PAM dan Pos YAN",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.6,
             },
             {
               title: "Kontak Darurat 110",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.6,
             },
             {
               title: "Live Streaming Info Lalin",
-              // icon: <FileSpreadsheet className="h-8 w-8" />,
-              // description: "Peta rekayasa lalu lintas mudik dan jalur alternatif",
               delay: 0.6,
             },
           ].map((item, index) => (
@@ -130,13 +152,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: item.delay, duration: 0.5 }}
-              className="border border-white bg-none rounded-xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1"
+              className={`border ${
+                theme === 'dark' ? 'border-white' : 'border-gray-300'
+              } ${
+                theme === 'dark' ? 'bg-none' : 'bg-white'
+              } rounded-xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center`}
             >
-                <div className="text-blue-600 mb-4 flex gap-2 items-center justify-center text-center">
-                <h3 className="text-xl font-semibold text-white">
+              <div className="flex gap-2 items-center justify-center text-center">
+                <h3 className={`text-md font-semibold ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-800'
+                }`}>
                   {item.title}
                 </h3>
-                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -147,20 +175,24 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="container mx-auto px-4 py-12"
+        className="container mx-auto px-4 py-4"
       >
         <motion.div
-          // key={index}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            // delay: item.delay,
             duration: 0.5,
           }}
-          className="border border-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1"
+          className={`border ${
+            theme === 'dark' ? 'border-white' : 'border-gray-300'
+          } ${
+            theme === 'dark' ? 'bg-none' : 'bg-white'
+          } rounded-xl pt-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1`}
         >
-          <div className="text-blue-600 mb-4 flex gap-2 items-center justify-center">
-            <h3 className="text-xl font-semibold text-white text-center">
+          <div className="mb-4 flex gap-2 items-center justify-center">
+            <h3 className={`text-xl font-semibold ${
+              theme === 'dark' ? 'text-white' : 'text-gray-800'
+            } text-center`}>
               Info Mudik via Whatsapp
             </h3>
           </div>

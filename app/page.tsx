@@ -71,19 +71,19 @@ export default function Home() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              src="/logo-kor.png"
+              src={theme === 'dark' ? '/logo-atas2.png' : '/logo-atas.png'}
               alt="Polantas Menyapa Logo"
-              className="mx-auto h-32 mb-8"
+              className="mx-auto mt-12 mb-8"
             />
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className={`text-md md:text-4xl font-bold ${
+              className={`text-sm md:text-4xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               } mb-6`}
             >
-              Selamat Datang di Polantas Menyapa
+              Selamat Datang di Polantas Menyapa!
             </motion.h1>
             <motion.p
               initial={{ y: 20, opacity: 0 }}
@@ -112,39 +112,48 @@ export default function Home() {
 
       {/* Grid Section */}
       <section className="container mx-auto px-4 py-2">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               title: "Polantas Menyapa By Travoy",
               delay: 0.2,
+              img: "/image1.png",
             },
             {
               title: "Pantauan CCTV Live",
               delay: 0.4,
+              img: "/image2.png",
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.6,
+              img: "/image3.png",
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.8,
+              img: "/image4.png",
             },
             {
               title: "Rest Area, SPBU dan Bengkel terdekat",
               delay: 0.6,
+              img: "/image5.png",
+              
             },
             {
               title: "Daftar Pos PAM dan Pos YAN",
               delay: 0.6,
+              img: "/image6.png",
             },
             {
               title: "Kontak Darurat 110",
               delay: 0.6,
+              img: "/image7.png",
             },
             {
               title: "Live Streaming Info Lalin",
               delay: 0.6,
+              img: "/image8.png",
             },
           ].map((item, index) => (
             <motion.div
@@ -152,26 +161,30 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: item.delay, duration: 0.5 }}
-              className={`border ${
-                theme === 'dark' ? 'border-white' : 'border-gray-300'
-              } ${
+              className={`${
                 theme === 'dark' ? 'bg-none' : 'bg-white'
-              } rounded-xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center`}
+              } rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center`}
             >
               <div className="flex gap-2 items-center justify-center text-center">
-                <h3 className={`text-md font-semibold ${
+                <img 
+                  src={item.img} 
+                  alt="Logo" 
+                  className="transform transition-transform duration-300 hover:scale-110" 
+                />
+                {/* <h3 className={`text-md font-semibold ${
                   theme === 'dark' ? 'text-white' : 'text-gray-800'
                 }`}>
                   {item.title}
-                </h3>
+                </h3> */}
               </div>
             </motion.div>
           ))}
         </div>
       </section>
+      <br />
 
       {/* Bottom Row */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
@@ -197,7 +210,7 @@ export default function Home() {
             </h3>
           </div>
         </motion.div>
-      </motion.section>
+      </motion.section> */}
     </main>
   );
 }

@@ -13,6 +13,7 @@ import {
   Moon,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { link } from "node:fs";
 
 export default function Home() {
   const [theme, setTheme] = useState('dark');
@@ -73,7 +74,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               src={theme === 'dark' ? '/logo-atas2.png' : '/logo-atas.png'}
               alt="Polantas Menyapa Logo"
-              className="mx-auto mt-12 mb-8"
+              className="mx-auto mt-12 mb-8 w-48 md:w-64 lg:w-auto"
             />
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
@@ -112,49 +113,57 @@ export default function Home() {
 
       {/* Grid Section */}
       <section className="container mx-auto px-4 py-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
               title: "Polantas Menyapa By Travoy",
               delay: 0.2,
               img: "/image1.png",
+              link: 'https://play.google.com/store/apps/details?id=com.jm.travoy&pcampaignid=web_share'
             },
             {
               title: "Pantauan CCTV Live",
               delay: 0.4,
               img: "/image2.png",
+              link: ''
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.6,
               img: "/image3.png",
+              link: ''
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.8,
               img: "/image4.png",
+              link: 'https://www.youtube.com/results?search_query=mudik+2025'
             },
             {
               title: "Rest Area, SPBU dan Bengkel terdekat",
               delay: 0.6,
               img: "/image5.png",
-              
+              link: 'https://binamarga.pu.go.id/contents/cctv_mudik#cctv'
             },
             {
               title: "Daftar Pos PAM dan Pos YAN",
               delay: 0.6,
               img: "/image6.png",
+              link: 'https://www.google.com/maps/search/rest+area+terdekat/@-6.2490606,106.8576529,7504m/data=!3m1!1e3!4m3!2m2!5m1!10e2?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D'
             },
             {
               title: "Kontak Darurat 110",
               delay: 0.6,
               img: "/image7.png",
+              link: ''
             },
             {
               title: "Live Streaming Info Lalin",
               delay: 0.6,
               img: "/image8.png",
+              link: 'https://twitter.com/intent/tweet?text=Lapor%20mudik%202025%20@NTMCLantasPolri%20@DivHumas_Polri'
             },
+            
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -166,51 +175,48 @@ export default function Home() {
               } rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center`}
             >
               <div className="flex gap-2 items-center justify-center text-center">
-                <img 
-                  src={item.img} 
-                  alt="Logo" 
-                  className="transform transition-transform duration-300 hover:scale-110" 
-                />
-                {/* <h3 className={`text-md font-semibold ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-800'
-                }`}>
-                  {item.title}
-                </h3> */}
+                <a 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <img 
+                    src={item.img} 
+                    alt="Logo" 
+                    className="transform transition-transform duration-300 hover:scale-110" 
+                  />
+                </a>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
-      <br />
-
       {/* Bottom Row */}
-      {/* <motion.section
+      <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="container mx-auto px-4 py-4"
+        className="container mx-auto px-4 py-2"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={`border ${
-            theme === 'dark' ? 'border-white' : 'border-gray-300'
-          } ${
-            theme === 'dark' ? 'bg-none' : 'bg-white'
-          } rounded-xl pt-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1`}
-        >
-          <div className="mb-4 flex gap-2 items-center justify-center">
-            <h3 className={`text-xl font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
-            } text-center`}>
-              Info Mudik via Whatsapp
-            </h3>
-          </div>
-        </motion.div>
-      </motion.section> */}
+        <div className="grid grid-cols-1 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+            }}
+            className={`rounded-xl  transition-all duration-300 cursor-pointer hover:-translate-y-1`}
+          >
+            <div className="flex gap-2 items-center justify-center text-center">
+              <img 
+                src={"/image9.png"} 
+                alt="Logo" 
+                className="transform transition-transform duration-300 hover:scale-110 w-1/2 " 
+              />
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
     </main>
   );
 }

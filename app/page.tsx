@@ -11,12 +11,14 @@ import {
   ArrowRight,
   Sun,
   Moon,
+  X,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { link } from "node:fs";
 
 export default function Home() {
   const [theme, setTheme] = useState('dark');
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     // Check if there's a saved theme preference
@@ -44,6 +46,51 @@ export default function Home() {
 
   return (
     <main className={`min-h-screen ${theme === 'dark' ? 'bg-[#242581]' : 'bg-blue-50'}`}>
+      {/* Welcome Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className={`${theme === 'dark' ? 'bg-[#242581]' : 'bg-white'} rounded-xl p-6 max-w-md w-full relative`}
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <X size={24} />
+            </button>
+            <h2 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              Halo Sobat Mudik!
+            </h2>
+            <p className={`mb-4 ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
+              Pastikan perjalanan Anda aman dan nyaman dengan beberapa persiapan penting berikut:
+            </p>
+            <ul className={`list-none space-y-2 mb-4 ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                SIM & STNK yang masih berlaku
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                Siapkan saldo e-Toll yang cukup
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                Cek kondisi kendaraan
+              </li>
+            </ul>
+            <div className={`mb-4 ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
+              <p className="font-bold">Untuk keadaan darurat hubungi:</p>
+              <p>Contact Center 110</p>
+              <p>Posko Mudik terdekat.</p>
+            </div>
+            <p className={`text-center ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
+              Semoga perjalanan lancar dan selamat sampai tujuan! #MudikAmanNyama
+            </p>
+          </motion.div>
+        </div>
+      )}
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -74,7 +121,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               src={theme === 'dark' ? '/logo-atas2.png' : '/logo-atas.png'}
               alt="Polantas Menyapa Logo"
-              className="mx-auto mt-12 mb-8 w-48 md:w-64 lg:w-auto"
+              className="mx-auto mt-12 mb-8 w-48 md:w-48 lg:w-48"
             />
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
@@ -90,7 +137,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className={`text-md ${
+              className={`text-sm ${
                 theme === 'dark' ? 'text-blue-100' : 'text-gray-700'
               } max-w-3xl mx-auto mb-2`}
             >
@@ -113,7 +160,7 @@ export default function Home() {
 
       {/* Grid Section */}
       <section className="container mx-auto px-4 py-2">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
           {[
             {
               title: "Polantas Menyapa By Travoy",
@@ -155,7 +202,7 @@ export default function Home() {
               title: "Kontak Darurat 110",
               delay: 0.6,
               img: "/image7.png",
-              link: ''
+              link: 'tel:110'
             },
             {
               title: "Live Streaming Info Lalin",

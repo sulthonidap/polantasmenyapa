@@ -81,12 +81,12 @@ export default function Home() {
               </li>
             </ul>
             <div className={`mb-4 ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
-              <p className="font-bold">Untuk keadaan darurat hubungi:</p>
-              <p>Contact Center 110</p>
-              <p>Posko Mudik terdekat.</p>
+              <p className="font-bold text-center">Untuk keadaan darurat hubungi:</p>
+              <p className="text-center">Contact Center 110 atau</p>
+              <p className="text-center">Posko Mudik terdekat</p>
             </div>
             <p className={`text-center ${theme === 'dark' ? 'text-blue-100' : 'text-gray-700'}`}>
-              Semoga perjalanan lancar dan selamat sampai tujuan! #MudikAmanNyama
+              Semoga perjalanan lancar dan selamat sampai tujuan! #MudikAmanNyaman
             </p>
           </motion.div>
         </div>
@@ -160,7 +160,7 @@ export default function Home() {
 
       {/* Grid Section */}
       <section className="container mx-auto px-4 py-2">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3 justify-items-center place-items-center max-w-2xl mx-auto">
           {[
             {
               title: "Polantas Menyapa By Travoy",
@@ -210,6 +210,12 @@ export default function Home() {
               img: "/image8.png",
               link: 'https://twitter.com/intent/tweet?text=Lapor%20mudik%202025%20@NTMCLantasPolri%20@DivHumas_Polri'
             },
+            {
+              title: "Live Streaming Info Lalin",
+              delay: 0.6,
+              img: "/image9.png",
+              link: ''
+            },
             
           ].map((item, index) => (
             <motion.div
@@ -219,7 +225,7 @@ export default function Home() {
               transition={{ delay: item.delay, duration: 0.5 }}
               className={`${
                 theme === 'dark' ? 'bg-none' : 'bg-white'
-              } rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center`}
+              } rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center w-full max-w-[250px]`}
             >
               <div className="flex gap-2 items-center justify-center text-center">
                 <a 
@@ -239,7 +245,7 @@ export default function Home() {
         </div>
       </section>
       {/* Bottom Row */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
@@ -263,7 +269,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </motion.section>
+      </motion.section> */}
     </main>
   );
 }

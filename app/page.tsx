@@ -160,60 +160,64 @@ export default function Home() {
 
       {/* Grid Section */}
       <section className="container mx-auto px-4 py-2">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3 justify-items-center place-items-center max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 
+        md:grid-cols-3 lg:grid-cols-3 gap-2 
+        md:gap-3 justify-items-center place-items-center max-w-2xl 
+        md:w-[980px] 
+        mx-auto">
           {[
             {
               title: "Polantas Menyapa By Travoy",
               delay: 0.2,
-              img: "/image1.png",
+              img: "/big-1.png",
               link: 'https://play.google.com/store/apps/details?id=com.jm.travoy&pcampaignid=web_share'
             },
             {
               title: "Pantauan CCTV Live",
               delay: 0.4,
-              img: "/image2.png",
+              img: "/big-2.png",
               link: ''
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.6,
-              img: "/image3.png",
+              img: "/big-3.png",
               link: ''
             },
             {
               title: "Rekayasa dan Jalur Alternatif",
               delay: 0.8,
-              img: "/image4.png",
+              img: "/big-4.png",
               link: 'https://www.youtube.com/results?search_query=mudik+2025'
             },
             {
               title: "Rest Area, SPBU dan Bengkel terdekat",
               delay: 0.6,
-              img: "/image5.png",
+              img: "/big-5.png",
               link: 'https://binamarga.pu.go.id/contents/cctv_mudik#cctv'
             },
             {
               title: "Daftar Pos PAM dan Pos YAN",
               delay: 0.6,
-              img: "/image6.png",
+              img: "/big-6.png",
               link: 'https://www.google.com/maps/search/rest+area+terdekat/@-6.2490606,106.8576529,7504m/data=!3m1!1e3!4m3!2m2!5m1!10e2?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D'
             },
             {
               title: "Kontak Darurat 110",
               delay: 0.6,
-              img: "/image7.png",
+              img: "/big-7.png",
               link: 'tel:110'
             },
             {
               title: "Live Streaming Info Lalin",
               delay: 0.6,
-              img: "/image8.png",
+              img: "/big-8.png",
               link: 'https://twitter.com/intent/tweet?text=Lapor%20mudik%202025%20@NTMCLantasPolri%20@DivHumas_Polri'
             },
             {
               title: "Live Streaming Info Lalin",
               delay: 0.6,
-              img: "/image9.png",
+              img: "/big-9.png",
               link: ''
             },
             
@@ -244,32 +248,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-      {/* Bottom Row */}
-      {/* <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="container mx-auto px-4 py-2"
-      >
-        <div className="grid grid-cols-1 gap-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-            }}
-            className={`rounded-xl  transition-all duration-300 cursor-pointer hover:-translate-y-1`}
-          >
-            <div className="flex gap-2 items-center justify-center text-center">
-              <img 
-                src={"/image9.png"} 
-                alt="Logo" 
-                className="transform transition-transform duration-300 hover:scale-110 w-1/2 " 
-              />
-            </div>
-          </motion.div>
-        </div>
-      </motion.section> */}
     </main>
   );
 }
